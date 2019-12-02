@@ -1,7 +1,5 @@
 <h1>Bookmark Manager</h1>
 
-<body>
-
-<%=@bookmarks.all%>
-
-</body>
+<ul>
+  <%= @bookmarks.each { |bookmark| puts bookmark } %>
+</ul>

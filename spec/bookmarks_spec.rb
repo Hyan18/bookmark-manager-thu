@@ -6,7 +6,7 @@ describe 'Bookmarks' do
 
   describe '#all' do 
     it "displays all the users bookmarks" do
-      expect(bookmarks.all).to eq ["Gymshark: www.gymshark.com", "Google: www.google.com", "Boohooman: www.boohooman.com"]
+      expect(Bookmarks.all).to eq ["Gymshark: www.gymshark.com", "Google: www.google.com", "Boohooman: www.boohooman.com"]
     end
   end
 
