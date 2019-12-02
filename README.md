@@ -36,4 +36,4 @@ so it should show a list of my bookmarks.
 
 ## <a name="Domain Model">Domain Model</a>
 
-![](https://files.slack.com/files-pri/T03ALA7H4-FR5MQ5DPW/screenshot_2019-12-02_at_15.15.26.png)
+![Model](https://files.slack.com/files-pri/T03ALA7H4-FR5MQ5DPW/screenshot_2019-12-02_at_15.15.26.png)
