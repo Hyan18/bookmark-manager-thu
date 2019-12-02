@@ -4,7 +4,7 @@
 Bookmark Manager Challenge 
 -
 
-[Outline](#Outline) | [Task](#Task) | [Installation Instructions](#Installation) | [Domain Model](#Domain Model) | [User Stories](#Story) | [Feature Tests](#Feature_Tests) | [Objects & Methods](#Methods) |
+[Outline](#Outline) | [Task](#Task) | [Installation Instructions](#Installation) | [Domain Model](#Domain_Model) | [User Stories](#Story) | [Feature Tests](#Feature_Tests) | [Objects & Methods](#Methods) |
 
 
 ## <a name="Outline">Outline</a>
@@ -34,6 +34,6 @@ I want to view my bookmarks,
 so it should show a list of my bookmarks. 
 ```
 
-## <a name="Domain Model">Domain Model</a>
+## <a name="Domain_Model">Domain Model</a>
 
 ![Model](https://raw.githubusercontent.com/BenSheridanEdwards/Bookmark_Manager/98498848e117fac2cf863d19e71e4e7c0902ddb8/Screenshot%202019-12-02%20at%2015.15.26.png)
