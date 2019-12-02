@@ -4,7 +4,7 @@
 Bookmark Manager Challenge 
 -
 
-[Outline](#Outline) | [Task](#Task) | [Installation Instructions](#Installation) | [Feature Tests](#Feature_Tests) | [User Stories](#Story) | [Objects & Methods](#Methods) |
+[Outline](#Outline) | [Task](#Task) | [Installation Instructions](#Installation) | [Domain Model](#Domain_Model) | [User Stories](#Story) | [Feature Tests](#Feature_Tests) | [Objects & Methods](#Methods) |
 
 
 ## <a name="Outline">Outline</a>
@@ -30,10 +30,10 @@ $ rackup
 
 ```
 As a user of the bookmark manager,
-I want to view my bookmarks,
-so it should show a list of my bookmarks. 
+so I can access websites I go to regularly,
+I would like to view all my bookmarks,
 ```
 
-## <a name="Domain Model">Domain Model</a>
+## <a name="Domain_Model">Domain Model</a>
 
-![Model](https://files.slack.com/files-pri/T03ALA7H4-FR5MQ5DPW/screenshot_2019-12-02_at_15.15.26.png)
+![Model](https://raw.githubusercontent.com/BenSheridanEdwards/Bookmark_Manager/98498848e117fac2cf863d19e71e4e7c0902ddb8/Screenshot%202019-12-02%20at%2015.15.26.png)
