@@ -4,7 +4,7 @@
 Bookmark Manager Challenge 
 -
 
-[Outline](#Outline) | [Task](#Task) | [Installation Instructions](#Installation) | [Feature Tests](#Feature_Tests) | [User Stories](#Story) | [Objects & Methods](#Methods) |
+[Outline](#Outline) | [Task](#Task) | [Installation Instructions](#Installation) | [Domain Model](#Domain Model) | [User Stories](#Story) | [Feature Tests](#Feature_Tests) | [Objects & Methods](#Methods) |
 
 
 ## <a name="Outline">Outline</a>
