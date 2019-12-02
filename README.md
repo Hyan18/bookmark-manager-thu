@@ -30,8 +30,8 @@ $ rackup
 
 ```
 As a user of the bookmark manager,
-I want to view my bookmarks,
-so it should show a list of my bookmarks. 
+so I can access websites I go to regularly,
+I would like to view all my bookmarks,
 ```
 
 ## <a name="Domain_Model">Domain Model</a>
