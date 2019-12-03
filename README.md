@@ -32,6 +32,10 @@ $ rackup
 As a user of the bookmark manager,
 so I can access websites I go to regularly,
 I would like to view all my bookmarks,
+
+As a time-pressed user
+So that I can save a website
+I would like to add the site's address and title to bookmark manager
 ```
 
 ## <a name="Domain_Model">Domain Model</a>
