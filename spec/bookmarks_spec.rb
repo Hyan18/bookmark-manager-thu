@@ -6,7 +6,9 @@ describe 'Bookmarks' do
 
   describe '#all' do 
     it "displays all the users bookmarks" do
-      expect(Bookmarks.all).to eq ["http://www.makersacademy.com", "http://www.google.com", "http://www.destroyallsoftware.com", "http://www.askjeeves.com"]
+      connection = PG.connect(dbname: 'bookmark_manager_test')
+      connection.exec("INSERT INTO bookmarks(url) VALUES('http://www.youtube.com')")
+      expect(Bookmarks.all).to eq ["http://www.youtube.com"]
     end
   end
 

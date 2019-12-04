@@ -41,3 +41,11 @@ I would like to add the site's address and title to bookmark manager
 ## <a name="Domain_Model">Domain Model</a>
 
 ![Model](https://raw.githubusercontent.com/BenSheridanEdwards/Bookmark_Manager/98498848e117fac2cf863d19e71e4e7c0902ddb8/Screenshot%202019-12-02%20at%2015.15.26.png)
+
+## <a name="Set_databse">Setting up a test databse</a>
+```
+admin=# CREATE DATABASE "bookmark_manager_test";
+admin=# /c bookmark_manager_test
+admin=# CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, url VARCHAR(60));
+```
+

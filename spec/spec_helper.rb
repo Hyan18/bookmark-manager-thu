@@ -1,6 +1,7 @@
+require 'pg'
 
-ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
+ENV['RACK_ENV'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', './app/bookmark_manager.rb')
 
@@ -38,6 +39,11 @@ SimpleCov.start
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+
+  config.before(:each) do
+    connection = PG.connect(dbname: 'bookmark_manager_test') 
+    connection.exec('TRUNCATE TABLE bookmarks')
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
