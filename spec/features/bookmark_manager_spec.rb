@@ -8,9 +8,17 @@ end
 
 feature 'Bookmarks list' do
   scenario "when a user is logged in, they should be able to see a list of their bookmarks" do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
-    connection.exec("INSERT INTO bookmarks(url) VALUES('http://www.youtube.com')")
+    Bookmarks.create("http://www.youtube.com")
     visit('/bookmarks')
     expect(page).to have_content "http://www.youtube.com"
+  end
+end
+
+feature 'Adding bookmarks' do
+  scenario 'After logging in I want to save some website as my bookmark' do
+    visit('/bookmarks/new')
+    fill_in 'url', with: 'http://www.youtube.com'
+    click_button 'submit'
+    expect(page).to have_content 'http://www.youtube.com'
   end
 end
