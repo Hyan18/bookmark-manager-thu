@@ -8,7 +8,7 @@ end
 
 feature 'Bookmarks list' do
   scenario "when a user is logged in, they should be able to see a list of their bookmarks" do
-    Bookmarks.create("http://www.youtube.com", "Youtube")
+    Bookmark.create(url: "http://www.youtube.com", title: "Youtube")
     visit('/bookmarks')
     expect(page).to have_content "Youtube"
   end
