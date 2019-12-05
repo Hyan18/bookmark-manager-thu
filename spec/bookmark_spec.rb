@@ -41,8 +41,14 @@ describe 'Bookmark' do
       Bookmark.delete(title: bookmark_to_delete.title)
 
       bookmarks = Bookmark.all
+
+      contains_bookmark = bookmarks.any? { |bookmark| bookmark.title == bookmark_to_delete.title }
   
-      expect(bookmarks.any? { |bookmark| bookmark.title == bookmark_to_delete.title }).to eq false
+      expect(contains_bookmark).to eq false
+    end
+
+    it "should raise an error if bookmark does not exist in database" do
+      expect{ Bookmark.delete(title: 'Test Bookmark') }.to raise_error("That bookmark does not exist")
     end
   end
 

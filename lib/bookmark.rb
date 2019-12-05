@@ -32,6 +32,7 @@ class Bookmark
   end
 
   def self.delete(title:)
+    raise "That bookmark does not exist" unless (Bookmark.all.any? { |bookmark| bookmark.title == title })
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'bookmark_manager_test') 
     else
@@ -39,4 +40,5 @@ class Bookmark
     end
     connection.exec("DELETE FROM bookmarks WHERE title = '#{title}';")
   end
+
 end

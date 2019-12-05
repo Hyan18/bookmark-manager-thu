@@ -48,6 +48,12 @@
         null,
         1,
         null,
+        1,
+        null,
+        null,
+        1,
+        2,
+        null,
         null,
         null,
         null
@@ -62,6 +68,9 @@
         1,
         null,
         null
+      ],
+      "/Users/student/Projects/Pairing/Week-4-Bookmark-Manager/bookmark-manager-thu/spec/features/deleting_bookmarks_spec.rb": [
+
       ],
       "/Users/student/Projects/Pairing/Week-4-Bookmark-Manager/bookmark-manager-thu/spec/features/viewing_bookmarks_spec.rb": [
         null,
@@ -87,6 +96,6 @@
         null
       ]
     },
-    "timestamp": 1575558294
+    "timestamp": 1575560874
   }
 }
