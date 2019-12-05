@@ -38,17 +38,13 @@ describe 'Bookmark' do
   describe "#delete" do
     it "should delete an existing bookmark" do
       bookmark_to_delete = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
-      Bookmark.delete(title: bookmark_to_delete.title)
+      Bookmark.delete(id: bookmark_to_delete.id)
 
-      bookmarks = Bookmark.all
-
-      contains_bookmark = bookmarks.any? { |bookmark| bookmark.title == bookmark_to_delete.title }
-  
-      expect(contains_bookmark).to eq false
+      expect(Bookmark.all.length).to eq 0
     end
 
     it "should raise an error if bookmark does not exist in database" do
-      expect{ Bookmark.delete(title: 'Test Bookmark') }.to raise_error("That bookmark does not exist")
+      expect{ Bookmark.delete(id: 999) }.to raise_error("That bookmark does not exist")
     end
   end
 
