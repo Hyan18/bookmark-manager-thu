@@ -51,10 +51,28 @@ describe 'Bookmark' do
   describe "#update" do
     it "should update an existing bookmark" do
       bookmark = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
-      Bookmark.update(id: bookmark.id, url: 'new_url', title: 'Updated Test Bookmark')
+      updated_bookmark = Bookmark.update(id: bookmark.id, url: 'new_url', title: 'Updated Test Bookmark')
 
-      expect(Bookmark.all.first.url).to eq('new_url')
-      expect(Bookmark.all.first.title).to eq('Updated Test Bookmark')
+      expect(updated_bookmark).to be_a Bookmark
+      expect(updated_bookmark.id).to eq bookmark.id
+      expect(updated_bookmark.url).to eq('new_url')
+      expect(updated_bookmark.title).to eq('Updated Test Bookmark')
+    end
+
+    it "should raise an error if bookmark does not exist in database" do
+      expect{ Bookmark.delete(id: 999) }.to raise_error("That bookmark does not exist")
+    end
+  end
+
+  describe "#find" do
+    it "should return a bookmark" do
+      bookmark = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
+      found_bookmark = Bookmark.find(id: bookmark.id)
+
+      expect(found_bookmark).to be_a Bookmark
+      expect(found_bookmark.id).to eq bookmark.id
+      expect(found_bookmark.url).to eq(bookmark.url)
+      expect(found_bookmark.title).to eq(bookmark.title)
     end
 
     it "should raise an error if bookmark does not exist in database" do

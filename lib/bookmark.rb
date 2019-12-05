@@ -56,7 +56,12 @@ class Bookmark
     # url = bookmark.url if url == ""
     # title = bookmark.title if url == ""
 
-    connection.exec("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = '#{id}';")
+    result = connection.exec("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = '#{id}' RETURNING id, title, url;;")
+    Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
+  end
+
+  def self.find(id:)
+    Bookmark.all.find { |bookmark| bookmark.id == id }
   end
 
 end
