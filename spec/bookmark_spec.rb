@@ -5,10 +5,9 @@ describe 'Bookmark' do
   let(:bookmarks) {Bookmarks.new}
 
   describe "#all" do
-    it "returns a list of bookmarks" do
+    it "should return a list of bookmarks" do
       connection = PG.connect(dbname: 'bookmark_manager_test')
    
-      # Add the test data
       bookmark = Bookmark.create(url: "http://www.makersacademy.com", title: "Makers Academy")
       p bookmark
       Bookmark.create(url: "http://www.destroyallsoftware.com", title: "Destroy All Software")
@@ -25,7 +24,7 @@ describe 'Bookmark' do
    end
 
    describe "#create" do
-    it "creates a new bookmark" do
+    it "should create a new bookmark" do
       bookmark = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
       persisted_data = PG.connect(dbname: 'bookmark_manager_test').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id};")
   
@@ -33,6 +32,17 @@ describe 'Bookmark' do
       expect(bookmark.id).to eq persisted_data.first['id']
       expect(bookmark.title).to eq 'Test Bookmark'
       expect(bookmark.url).to eq 'http://www.testbookmark.com'
+    end
+  end
+
+  describe "#delete" do
+    it "should delete an existing bookmark" do
+      bookmark_to_delete = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
+      Bookmark.delete(title: bookmark_to_delete.title)
+
+      bookmarks = Bookmark.all
+  
+      expect(bookmarks.any? { |bookmark| bookmark.title == bookmark_to_delete.title }).to eq false
     end
   end
 
