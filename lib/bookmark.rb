@@ -42,7 +42,7 @@ class Bookmark
     connection.exec("DELETE FROM bookmarks WHERE id = '#{id}';")
   end
 
-  def self.update(id:, url: nil, title: nil)
+  def self.update(id:, url:, title:)
     raise "That bookmark does not exist" unless (Bookmark.all.any? { |bookmark| bookmark.id == id })
     
     if ENV['ENVIRONMENT'] == 'test'
@@ -53,8 +53,8 @@ class Bookmark
 
     bookmark = Bookmark.all.find { |bookmark| bookmark.id == id }
 
-    url = bookmark.url unless url
-    title = bookmark.title unless url
+    # url = bookmark.url if url == ""
+    # title = bookmark.title if url == ""
 
     connection.exec("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = '#{id}';")
   end

@@ -51,8 +51,9 @@ describe 'Bookmark' do
   describe "#update" do
     it "should update an existing bookmark" do
       bookmark = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
-      Bookmark.update(id: bookmark.id, title: 'Updated Test Bookmark')
+      Bookmark.update(id: bookmark.id, url: 'new_url', title: 'Updated Test Bookmark')
 
+      expect(Bookmark.all.first.url).to eq('new_url')
       expect(Bookmark.all.first.title).to eq('Updated Test Bookmark')
     end
 
