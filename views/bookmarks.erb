@@ -3,9 +3,11 @@
 <ul>
   <% @bookmarks.each do |bookmark| %>
   <li class="bookmark" id="bookmark-<%= bookmark.id %>">
+    <div style="padding-bottom: 15px">
     <a href= <%= "#{bookmark.url}" %> >
       <%=bookmark.title%>
     </a>
+    </div>
     <form action="/bookmarks/<%= bookmark.id %>" method="POST">
       <input id="hidden" type="hidden" name="_method" value="DELETE">
       <button type='submit'> Delete </button>

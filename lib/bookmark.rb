@@ -32,7 +32,6 @@ class Bookmark
   end
 
   def self.delete(id:)
-    raise "That bookmark does not exist" unless (Bookmark.all.any? { |bookmark| bookmark.id == id })
     
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'bookmark_manager_test') 
@@ -43,7 +42,6 @@ class Bookmark
   end
 
   def self.update(id:, url:, title:)
-    raise "That bookmark does not exist" unless (Bookmark.all.any? { |bookmark| bookmark.id == id })
     
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'bookmark_manager_test') 
@@ -51,17 +49,20 @@ class Bookmark
       connection = PG.connect(dbname: 'bookmark_manager')
     end
 
-    bookmark = Bookmark.all.find { |bookmark| bookmark.id == id }
-
-    # url = bookmark.url if url == ""
-    # title = bookmark.title if url == ""
+    bookmark = Bookmark.find(id: id)
 
     result = connection.exec("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = '#{id}' RETURNING id, title, url;;")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
   def self.find(id:)
-    Bookmark.all.find { |bookmark| bookmark.id == id }
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'bookmark_manager_test') 
+    else
+      connection = PG.connect(dbname: 'bookmark_manager')
+    end
+    result = connection.exec("SELECT id, url, title FROM bookmarks WHERE id = '#{id}';")
+    Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
 end

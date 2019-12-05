@@ -42,10 +42,6 @@ describe 'Bookmark' do
 
       expect(Bookmark.all.length).to eq 0
     end
-
-    it "should raise an error if bookmark does not exist in database" do
-      expect{ Bookmark.delete(id: 999) }.to raise_error("That bookmark does not exist")
-    end
   end
 
   describe "#update" do
@@ -58,10 +54,6 @@ describe 'Bookmark' do
       expect(updated_bookmark.url).to eq('new_url')
       expect(updated_bookmark.title).to eq('Updated Test Bookmark')
     end
-
-    it "should raise an error if bookmark does not exist in database" do
-      expect{ Bookmark.delete(id: 999) }.to raise_error("That bookmark does not exist")
-    end
   end
 
   describe "#find" do
@@ -73,10 +65,6 @@ describe 'Bookmark' do
       expect(found_bookmark.id).to eq bookmark.id
       expect(found_bookmark.url).to eq(bookmark.url)
       expect(found_bookmark.title).to eq(bookmark.title)
-    end
-
-    it "should raise an error if bookmark does not exist in database" do
-      expect{ Bookmark.delete(id: 999) }.to raise_error("That bookmark does not exist")
     end
   end
 

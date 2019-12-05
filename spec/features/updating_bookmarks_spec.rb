@@ -5,6 +5,7 @@ feature "updating bookmarks" do
     expect(page).to have_link("Youtube", href: 'http://www.youtube.com')
 
     first('.bookmark').click_button 'Update'
+    expect(page).to have_link("Youtube", href: 'http://www.youtube.com')
     fill_in 'url', with: 'http://www.newyoutube.com'
     fill_in 'title', with: 'New Youtube'
     click_button 'Update'
