@@ -8,18 +8,14 @@ end
 
 feature 'Bookmarks list' do
   scenario "when a user is logged in, they should be able to see a list of their bookmarks" do
-    Bookmark.create(url: "http://www.youtube.com", title: "Youtube")
-    visit('/bookmarks')
-    expect(page).to have_content "Youtube"
-  end
-end
+    Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers')
+    Bookmark.create(url: 'http://www.google.com', title: 'Google')
+    Bookmark.create(url: 'http://www.destroyallsoftware.com', title: 'destroyallsoftware')
 
-feature 'Adding bookmarks' do
-  scenario 'After logging in I want to save some website as my bookmark' do
-    visit('/bookmarks/new')
-    fill_in 'url', with: 'http://www.youtube.com'
-    fill_in 'title', with: 'Youtube'
-    click_button 'submit'
-    expect(page).to have_link("Youtube", href: 'http://www.youtube.com')
+    visit '/bookmarks'
+
+    expect(page). to have_link("Makers", href: "http://www.makersacademy.com")
+    expect(page). to have_link("Google", href: "http://www.google.com")
+    expect(page). to have_link("destroyallsoftware", href: "http://www.destroyallsoftware.com")
   end
 end
