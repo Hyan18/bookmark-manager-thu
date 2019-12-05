@@ -33,12 +33,30 @@ class Bookmark
 
   def self.delete(id:)
     raise "That bookmark does not exist" unless (Bookmark.all.any? { |bookmark| bookmark.id == id })
+    
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'bookmark_manager_test') 
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end
     connection.exec("DELETE FROM bookmarks WHERE id = '#{id}';")
+  end
+
+  def self.update(id:, url: nil, title: nil)
+    raise "That bookmark does not exist" unless (Bookmark.all.any? { |bookmark| bookmark.id == id })
+    
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'bookmark_manager_test') 
+    else
+      connection = PG.connect(dbname: 'bookmark_manager')
+    end
+
+    bookmark = Bookmark.all.find { |bookmark| bookmark.id == id }
+
+    url = bookmark.url unless url
+    title = bookmark.title unless url
+
+    connection.exec("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = '#{id}';")
   end
 
 end

@@ -48,4 +48,17 @@ describe 'Bookmark' do
     end
   end
 
+  describe "#update" do
+    it "should update an existing bookmark" do
+      bookmark = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
+      Bookmark.update(id: bookmark.id, title: 'Updated Test Bookmark')
+
+      expect(Bookmark.all.first.title).to eq('Updated Test Bookmark')
+    end
+
+    it "should raise an error if bookmark does not exist in database" do
+      expect{ Bookmark.delete(id: 999) }.to raise_error("That bookmark does not exist")
+    end
+  end
+
 end
